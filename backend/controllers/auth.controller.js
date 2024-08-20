@@ -1,5 +1,7 @@
 export const signup = (req, res) => {
-  res.send("signup");
+  try {
+    const { fullname, username, password, confirmPassword, gender } = req.body;
+  } catch (e) {}
 };
 
 export const login = (req, res) => {
