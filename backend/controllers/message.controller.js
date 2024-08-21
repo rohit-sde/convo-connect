@@ -1,12 +1,13 @@
 import Conversation from "../models/conversation.model.js";
+import Message from "../models/message.model.js";
 
-export const sendMessage = async (res, req) => {
+export const sendMessage = async (req, res) => {
   try {
     const { message } = req.body;
-    const { id } = req.params;
+    const { id: receiverId } = req.params;
     const senderId = req.user._id;
 
-    let conversation = new Conversation.findone({
+    let conversation = await Conversation.findOne({
       participants: { $all: [senderId, receiverId] },
     });
 
@@ -29,7 +30,7 @@ export const sendMessage = async (res, req) => {
     await conversation.save();
     await newMessage.save();
 
-    res.status(201).json({ message: "Message sent successfully" });
+    res.status(201).json({ newMessage });
   } catch (err) {
     console.log("Error in Send Message Controller: ", err.message);
     res.status(500).json({ message: "Internal Server Error" });
