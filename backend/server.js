@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 
 import router from "./routes/auth.routes.js";
 import messageRouter from "./routes/message.routes.js";
+import userRoutes from "./routes/user.routes.js";
+
 import connectToMongooDB from "./db/connectToMongoDB.js";
 
 const app = express();
@@ -16,6 +18,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", router);
 app.use("/api/message", messageRouter);
+app.use("/api/user", userRoutes);
 
 // app.get("/", (req, res) => {
 //   res.send("Hello World!");
