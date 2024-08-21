@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 
 import router from "./routes/auth.routes.js";
+import messageRouter from "./routes/message.routes.js";
 import connectToMongooDB from "./db/connectToMongoDB.js";
 
 const app = express();
@@ -12,6 +13,7 @@ dotenv.config();
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
 
 app.use("/api/auth", router);
+app.use("/api/message", messageRouter);
 
 // app.get("/", (req, res) => {
 //   res.send("Hello World!");
