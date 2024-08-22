@@ -15,9 +15,10 @@ const SearchInput = () => {
   );
 };
 
+export default SearchInput;
+
 //-------------------------------------------------------- Starter code for SignUp Component
 
-// export default SearchInput;
 // import { IoSearchSharp } from "react-icons/io5";
 
 // const SearchInput = () => {
