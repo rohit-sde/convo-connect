@@ -21,9 +21,10 @@ const Conversation = () => {
   );
 };
 
+export default Conversation;
+
 //-------------------------------------------------------- Starter code for SignUp Component
 
-// export default Conversation;
 // import { FaRegUserCircle } from "react-icons/fa";
 
 // const Conversation = () => {

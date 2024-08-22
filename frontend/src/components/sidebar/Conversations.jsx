@@ -13,10 +13,10 @@ const Conversations = () => {
     </div>
   );
 };
+export default Conversations;
 
 //-------------------------------------------------------- Starter code for SignUp Component
 
-// export default Conversations;
 // // import React from "react";
 // import Conversation from "./Mconversation.jsx";
 
