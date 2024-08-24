@@ -7,7 +7,7 @@ export const signup = async (req, res) => {
     console.log("Hi I have signed up");
 
     const { fullName, username, password, confirmPassword, gender } = req.body;
-    console.log(fullName);
+    console.log("fullName", fullName);
 
     if (password !== confirmPassword) {
       return res.status(400).json({ error: "Passwords don't match" });
