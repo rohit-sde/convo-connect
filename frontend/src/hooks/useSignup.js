@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { json } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 
 const useSignup = () => {
