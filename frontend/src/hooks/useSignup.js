@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { json } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
+  const { setAuthUser } = useAuthContext();
 
   const signup = async ({
     fullName,
@@ -35,10 +38,15 @@ const useSignup = () => {
         }),
       });
       const data = await res.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      localStorage.setItem("convo-connect", JSON.stringify(data));
+      setAuthUser(data);
       console.log("in hooks", data);
-      return data;
     } catch (err) {
-      toast.error(err.m);
+      toast.error(err.message);
       return false;
     } finally {
       setLoading(false);

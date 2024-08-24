@@ -52,7 +52,7 @@ export const signup = async (req, res) => {
         profilePic: newUser.profilePic,
       });
     } else {
-      res.status(400).json({ error: "Failed to create user" });
+      res.status(400).json({ error: "Invaild user data" });
     }
   } catch (e) {
     console.log("Error in signup controller", e.message);
