@@ -25,14 +25,15 @@ const Messages = () => {
         messages.map((message) => {
           return (
             <div key={message._id} ref={lastMessageRef}>
-              <Message message={message} />;
+              <Message message={message} />
             </div>
           );
         })}
       {!loading && noofskeletons === 0 && (
         <div className="flex items-center justify-center h-full text-center text-gray-500">
           <p className="italic">
-            "No messages yet. Start the conversation and break the silence!"
+            &quot;No messages yet. Start the conversation and break the
+            silence!&quot;
           </p>
         </div>
       )}
