@@ -16,7 +16,7 @@ const Messages = () => {
       {!loading &&
         noofskeletons > 0 &&
         messages.map((message) => {
-          <Message key={message._id} message={message} />;
+          return <Message key={message._id} message={message} />;
         })}
       {!loading && noofskeletons === 0 && (
         <div className="flex items-center justify-center h-full text-center text-gray-500">

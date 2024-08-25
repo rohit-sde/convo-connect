@@ -1,19 +1,32 @@
+/* eslint-disable react/prop-types */
 import { FaRegUserCircle } from "react-icons/fa";
+import { useAuthContext } from "../../context/AuthContext";
+import useConversation from "../../zustand/useConversation";
+import { extractTime } from "../utils/extractTime";
 
-const Message = () => {
+const Message = ({ message }) => {
+  const { authUser } = useAuthContext();
+  const { selectedConversation } = useConversation();
+  const fromMe = message.senderId === authUser._id;
+  const chatClassName = fromMe ? "chat-end" : "chat-start";
+  const profilePic = fromMe
+    ? authUser.profilePic
+    : selectedConversation?.profilePic;
+  const bubbleBgColor = fromMe ? "bg-blue-500" : "";
+  const formatedTime = extractTime(message.createdAt);
+
   return (
-    <div className="chat chat-end">
+    <div className={`chat ${chatClassName}`}>
       <div className="chat-image avatar">
         <div className="w-10 rounded-full pt-2">
-          {/* <img alt="Tailwind CSS chat bubble component" src={}/> */}
-          <FaRegUserCircle />
+          <img alt="Tailwind CSS chat bubble component" src={profilePic} />
         </div>
       </div>
-      <div className={`chat-bubble text-white bg-blue-500`}>
-        Hi! What is upp?
+      <div className={`chat-bubble text-white ${bubbleBgColor}`}>
+        {message.message}
       </div>
       <div className={`chat-footer opacity text-xs flex gap-1 items-center`}>
-        09:58
+        {formatedTime}
       </div>
     </div>
   );
