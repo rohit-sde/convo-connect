@@ -20,7 +20,7 @@ const useSignup = () => {
       confirmPassword,
       gender,
     });
-    console.log(success);
+    // console.log(success);
     if (!success) return;
     setLoading(true);
 
@@ -43,7 +43,7 @@ const useSignup = () => {
 
       localStorage.setItem("convo-connect", JSON.stringify(data));
       setAuthUser(data);
-      console.log("in hooks", data);
+      // console.log("in hooks", data);
     } catch (err) {
       toast.error(err.message);
       return false;
@@ -68,13 +68,13 @@ function handleInputErrors({
     toast.error("All fields Required for Signup");
     return false;
   }
-  console.log("All fields Required for Signup");
+  // console.log("All fields Required for Signup");
 
   if (password !== confirmPassword) {
     toast.error("Passwords do not match");
     return false;
   }
-  console.log("Passwords do not match");
+  // console.log("Passwords do not match");
 
   if (password.length < 6) {
     toast.error("Password must be at least 6 characters long");

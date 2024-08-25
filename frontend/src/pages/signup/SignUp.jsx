@@ -21,9 +21,9 @@ const SignUp = () => {
   };
 
   const handleSubmit = async (e) => {
-    console.log("Submit");
+    // console.log("Submit");
     e.preventDefault();
-    console.log("from handle submit func", inputs);
+    // console.log("from handle submit func", inputs);
     await signup(inputs);
   };
   return (

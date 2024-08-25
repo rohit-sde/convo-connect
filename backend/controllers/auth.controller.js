@@ -4,10 +4,10 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
   try {
-    console.log("Hi I have signed up");
+    // console.log("Hi I have signed up");
 
     const { fullName, username, password, confirmPassword, gender } = req.body;
-    console.log("fullName", fullName);
+    // console.log("fullName", fullName);
 
     if (password !== confirmPassword) {
       return res.status(400).json({ error: "Passwords don't match" });
@@ -22,9 +22,9 @@ export const signup = async (req, res) => {
     // Hash the password
 
     const salt = await bcrypt.genSalt(10);
-    console.log(salt);
+    // console.log(salt);
     const hashedPassword = await bcrypt.hash(password, salt);
-    console.log(hashedPassword);
+    // console.log(hashedPassword);
 
     // for profile picture of user
     // https://avatar-placeholer.iran.liara.run
@@ -84,7 +84,7 @@ export const login = async (req, res) => {
       profilePic: user.profilePic,
     });
 
-    console.log("User logged in");
+    // console.log("User logged in");
   } catch (e) {
     console.log("Error in login controller", e.message);
     res.status(500).json({ message: "Internal Server Error" });
