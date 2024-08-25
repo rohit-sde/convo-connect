@@ -2,12 +2,17 @@
 import Conversation from "./Mconversation.jsx";
 import useGetConversations from "../../hooks/useGetConversations.js";
 import getRandomEmoji from "../utils/emojis.js";
+import SidebarSkeleton from "../skeleton/SidebarSkeleton.jsx";
 
 const Conversations = () => {
   const { loading, conversations } = useGetConversations();
 
   return (
     <div className="py-2 flex flex-col overflow-auto">
+      {loading &&
+        [...Array(6)].map(() => {
+          <SidebarSkeleton />;
+        })}
       {conversations.map((conversation, idx) => {
         return (
           <Conversation
@@ -18,9 +23,6 @@ const Conversations = () => {
           />
         );
       })}
-      {loading ? (
-        <span className="loading loading-spinner mx-auto "></span>
-      ) : null}
     </div>
   );
 };
