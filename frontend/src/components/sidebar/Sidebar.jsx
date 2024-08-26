@@ -26,7 +26,7 @@ export default Sidebar;
 //       <SearchInput />
 //       <div className="divider px-3"></div>
 //       <Conversations />
-//       {/* <Logoutbutton /> */}
+//       {/* <LogoutButton /> */}
 //     </div>
 //   );
 // };
