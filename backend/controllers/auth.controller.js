@@ -60,7 +60,7 @@ export const signup = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {
+export const login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
@@ -71,8 +71,10 @@ export const login = async (req, res) => {
 
     if (!user) {
       res.status(400).json({ error: "Invalid username" });
+      return next();
     } else if (!isPasswordCorrect) {
       res.status(400).json({ error: "Invalid password" });
+      return next();
     }
 
     generateTokenAndSetCookie(user._id, res);
