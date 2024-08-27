@@ -15,11 +15,14 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("http://localhost:8181", {
-        query: {
-          userId: authUser._id,
-        },
-      });
+      const socket = io(
+        "https://convo-connect-git-repo-cloner-1.onrender.com",
+        {
+          query: {
+            userId: authUser._id,
+          },
+        }
+      );
 
       setSocket(socket);
 
