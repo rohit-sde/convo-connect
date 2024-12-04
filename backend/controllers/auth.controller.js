@@ -41,9 +41,12 @@ export const signup = async (req, res) => {
     });
 
     if (newUser) {
+      console.log("1");
       // generate jwt token
       generateTokenAndSetCookie(newUser._id, res);
+      console.log("2");
       await newUser.save();
+      console.log("3");
 
       res.status(201).json({
         _id: newUser._id,
@@ -51,6 +54,7 @@ export const signup = async (req, res) => {
         username: newUser.username,
         profilePic: newUser.profilePic,
       });
+      console.log("4");
     } else {
       res.status(400).json({ error: "Invaild user data" });
     }
