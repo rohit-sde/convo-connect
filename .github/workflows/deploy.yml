@@ -11,7 +11,7 @@ env:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-23.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -61,7 +61,7 @@ jobs:
         run: docker push ${{ env.ECR_REPOSITORY_URL }}:latest
 
       - name: Deploying the app
-        uses: rajpal-se/deploy-docker-container@main
+        uses: rajpal-se/deploy-docker-container@v1
         with:
           aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }}
           aws-ecr-region: ${{ secrets.AWS_ECR_REGION }}

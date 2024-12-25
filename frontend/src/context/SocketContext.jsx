@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { useAuthContext } from "./AuthContext";
 import io from "socket.io-client";
+import { CONFIG } from "../../config";
 
 const SocketContext = createContext();
 
@@ -17,9 +18,9 @@ export const SocketContextProvider = ({ children }) => {
     if (authUser) {
       const socket = io(
         // "https://convo-connect-git-repo-cloner-1.onrender.com",
-        "http://localhost:5066/api",
+        CONFIG.backendUrl,
         {
-          // path: "/api",
+          path: "/ws",
           // transports: ["websocket"],
           query: {
             userId: authUser._id,

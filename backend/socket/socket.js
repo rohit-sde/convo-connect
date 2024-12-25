@@ -11,9 +11,9 @@ const io = new Server(server, {
   // cors: CONFIG.cors,
   cors: {
     origin: "*",
-    // methods: ["GET", "POST"],
+    methods: ["GET", "POST"],
   },
-  path: "/api",
+  path: "/ws",
 });
 
 export const getReceiverSocketId = (receiverId) => {
