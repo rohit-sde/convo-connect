@@ -16,8 +16,8 @@ const Message = ({ message }) => {
 
   const shakeClass = message.shouldShake ? "shake" : "";
 
-  console.log(message.shouldShake);
-  console.log(shakeClass);
+  // console.log(message.shouldShake);
+  // console.log(shakeClass);
 
   return (
     <div className={`chat ${chatClassName}`}>

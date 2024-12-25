@@ -6,7 +6,7 @@ import useListenMessages from "../../hooks/useListenMessages";
 
 const Messages = () => {
   const { messages, loading } = useGetMessages();
-  console.log(messages, messages.length);
+  // console.log(messages, messages.length);
   const noofskeletons = messages.length;
   useListenMessages();
   const lastMessageRef = useRef();

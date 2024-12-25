@@ -6,12 +6,16 @@ const useGetConversations = () => {
   const [conversations, setConversations] = useState([]);
 
   useEffect(() => {
+    console.log(1, "useEffect");
     const getConversastions = async () => {
+      console.log(2, "getConversastions");
       setLoading(true);
       try {
+        console.log(3, "try");
         const response = await fetch("/api/users");
         const data = await response.json();
         if (data.error) {
+          console.log(4, "if (data.error)");
           throw new Error(data.error);
         }
         setConversations(data);
@@ -23,6 +27,7 @@ const useGetConversations = () => {
     };
     getConversastions();
   }, []);
+  console.log(conversations);
 
   return { loading, conversations };
 };
