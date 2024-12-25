@@ -17,8 +17,10 @@ export const SocketContextProvider = ({ children }) => {
     if (authUser) {
       const socket = io(
         // "https://convo-connect-git-repo-cloner-1.onrender.com",
-        "http://localhost:8181",
+        "http://localhost:5066/api",
         {
+          // path: "/api",
+          // transports: ["websocket"],
           query: {
             userId: authUser._id,
           },

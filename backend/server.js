@@ -1,38 +1,39 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import path from "path";
-
-import router from "./routes/auth.routes.js";
-import messageRouter from "./routes/message.routes.js";
-import userRoutes from "./routes/user.routes.js";
 
 import connectToMongooDB from "./db/connectToMongoDB.js";
-import { app, server } from "./socket/socket.js";
-
-const PORT = process.env.PORT || 8181;
-
-const __dirname = path.resolve();
+import { app } from "./socket/socket.js";
+import { CONFIG } from "./config.mjs";
+import routes from "./routes/index.routes.js";
 
 dotenv.config();
 
-app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
-app.use(cookieParser());
+app.use(
+  "/api",
+  ...[
+    express.json(),
+    cookieParser(),
+    (req, res, next) => {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Access-Control-Allow-Methods", "GET, POST");
+      res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+      next();
+    },
+    routes,
+    (req, res) => {
+      if (req.method === "OPTIONS") {
+        return res.sendStatus(200);
+      }
 
-app.use("/api/auth", router);
-app.use("/api/message", messageRouter);
-app.use("/api/users", userRoutes);
+      res.status(404).json({ message: "Not found" });
+    },
+  ]
+);
 
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.use(express.static("public"));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-});
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
-
-server.listen(PORT, () => {
+app.listen(CONFIG.port, CONFIG.host, () => {
   connectToMongooDB();
-  console.log(`server is runnig on port: ${PORT}`);
+  console.info(`Server is running at http://${CONFIG.host}:${CONFIG.port}`);
 });

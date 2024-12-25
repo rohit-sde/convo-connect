@@ -1,16 +1,19 @@
 import { Server } from "socket.io";
 import http from "http";
 import express from "express";
-import { Socket } from "dgram";
+// import { Socket } from "dgram";
+import { CONFIG } from "../config.mjs";
 
 const app = express();
 
 const server = http.createServer(app);
 const io = new Server(server, {
+  // cors: CONFIG.cors,
   cors: {
-    origin: ["http://localhost:8181", "http://localhost:3000"],
-    methods: ["GET", "POST"],
+    origin: "*",
+    // methods: ["GET", "POST"],
   },
+  path: "/api",
 });
 
 export const getReceiverSocketId = (receiverId) => {
