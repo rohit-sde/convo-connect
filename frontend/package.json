@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:prod": "cross-env VITE_NODE_ENV=production vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "convo-connect": "file:..",
     "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -26,6 +26,7 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.20",
+    "cross-env": "^7.0.3",
     "daisyui": "^4.12.10",
     "eslint": "^9.9.0",
     "eslint-plugin-react": "^7.35.0",
