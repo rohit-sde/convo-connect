@@ -13,7 +13,7 @@ const Conversations = () => {
         [...Array(6)].map(() => {
           <SidebarSkeleton />;
         })}
-      {conversations.map((conversation, idx) => {
+      {conversations?.map?.((conversation, idx) => {
         return (
           <Conversation
             key={conversation._id}

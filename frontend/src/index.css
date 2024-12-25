@@ -4,7 +4,7 @@
 
 body {
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("./../public/background.jpg");
+    url("/background.jpg");
   /* url("https://img.freepik.com/free-photo/blue-smooth-wall-textured-background_53876-106133.jpg?w=1060&t=st=1724603464~exp=1724604064~hmac=ddd569e01ea6cff74fdd465145e714bf5f2670905c0df969ca0637ea649b1edc"); */
   /* url("https://thumbs.dreamstime.com/b/d-fun-emoji-icon-seamless-pattern-background-fun-d-yellow-emoticon-face-seamless-pattern-white-background-social-chat-app-icon-159875557.jpg"); */
   background-repeat: no-repeat;
