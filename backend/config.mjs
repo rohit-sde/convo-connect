@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 export const CONFIG = {
-  port: 5066, // Port on which, Backend is running
+  port: 5204, // Port on which, Backend is running
   host: "0.0.0.0",
   cors,
 };
